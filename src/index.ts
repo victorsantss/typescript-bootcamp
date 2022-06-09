@@ -1,8 +1,11 @@
+import axios from "axios";
+
 import addFilms from "./utils/addFilms";
 import filterMoviesByIndicativeRating from "./utils/filterMoviesByIndicativeRating";
 import IndicativeRating from "./enums/IndicativeRating";
 import Movie from "./interfaces/Movie";
 import orderByAverageRate from "./utils/orderByAverageRate";
+import loadMovies from "./utils/loadMovies";
 
 const movies: Movie[] = [
   {
@@ -52,4 +55,12 @@ const filteredMoviesByIndicativeRating = filterMoviesByIndicativeRating(
 
 const newUserWithNewList = addFilms(user, movies, 3);
 
-console.log(newUserWithNewList);
+const request = axios({
+  method: "get",
+  url: "https://mcuapi.herokuapp.com/api/v1/movies?page=1&limit=100",
+});
+
+request.then((resultado) => {
+  const { data } = resultado.data;
+  console.log(loadMovies(data));
+});
