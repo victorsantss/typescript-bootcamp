@@ -4,15 +4,15 @@ interface MoviesFromApiDTO {
   id: number;
   title: string;
   duration: number;
-  directedBy: string;
+  directed_by: string;
 }
 
-function loadMovies(moviesFromApi: MoviesFromApiDTO[]): Partial<Movie>[] {
-  return moviesFromApi.map((movie) => ({
+function loadMovies(data: MoviesFromApiDTO[]): Omit<Movie, "ratings">[] {
+  return data.map((movie) => ({
     id: movie.id,
     name: movie.title,
-    durations: movie.duration,
-    directedBy: movie.directedBy,
+    directed_by: movie.directed_by,
+    duration: movie.duration,
   }));
 }
 

@@ -1,5 +1,4 @@
 import User from "./interfaces/User";
-import MovieService from "./services/MovieService";
 
 const user: User = {
   name: "Victor Santos",
@@ -7,6 +6,6 @@ const user: User = {
   myList: [],
 };
 
-new MovieService().listAll().then(( result ) => {
-  console.log(result);
-});
+// new MovieService().listAll().then(( result ) => {
+//   console.log(result);
+// });

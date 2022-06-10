@@ -1,11 +1,9 @@
-import IndicativeRating from "../enums/IndicativeRating";
-
 interface Movie {
   id: number;
   name: string;
   ratings: number[];
   duration: number;
-  directedBy: string;
+  directed_by: string;
 }
 
 export default Movie;
