@@ -1,19 +1,10 @@
 import inquirer from "inquirer";
 import MenuChoices from "./enums/MenuChoices";
 import Movie from "./interfaces/Movie";
-import MovieService from "./services/MovieService";
-import addFilms from "./utils/addFilms";
 import { addToList } from "./utils/addToList";
-import calculateMoviesAverage from "./utils/calculateMoviesAverage";
 import { chooseUser } from "./utils/chooseUser";
-import {
-  addToListQuestion,
-  chooseMovieQuestion,
-  chooseUserQuestion,
-  menuQuestion,
-  rateQuestion,
-  users,
-} from "./utils/questionsAndOptions";
+import { initApplication } from "./utils/initApplication";
+import { menuQuestion } from "./utils/questionsAndOptions";
 import { rateMovie } from "./utils/rateMovie";
 import { showWithAverage } from "./utils/showWithAverage";
 
@@ -43,4 +34,4 @@ export async function runMenu() {
   }
 }
 
-chooseUser();
+initApplication();
