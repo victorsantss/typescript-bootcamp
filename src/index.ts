@@ -16,6 +16,10 @@ import {
 let movies: Movie[] = [];
 let loggedUserId: number;
 
+async function initApplication() {
+  chooseUser();
+}
+
 async function chooseUser() {
   try {
     const selectUser = await inquirer.prompt(chooseUserQuestion);
@@ -51,7 +55,6 @@ async function rateMovie() {
       const rateAnswers = await inquirer.prompt(rateQuestion);
       let rate = rateAnswers.option;
       movieSelected.ratings.push(rate);
-      runMenu();
     } else {
       console.log("Filme não encontrado");
     }
@@ -83,6 +86,7 @@ async function addToList() {
       .map((id: string) => parseInt(id));
 
     users[loggedUserId] = addFilms(users[loggedUserId], movies, ...moviesIds);
+    console.log("Filmes adicionados a lista com sucesso");
   } catch {
     console.log("Erro ao adicionar filmes para a lista");
   } finally {
@@ -111,4 +115,4 @@ async function runMenu() {
   }
 }
 
-chooseUser();
+initApplication();
